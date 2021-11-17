@@ -14,11 +14,17 @@
     pip install gitfunctions
 ```
 
+### Parâmetros
+
+- remote_repository_name (Opcional): Nome do repositório remoto
+- repo_path (Opcional): Caminho do projeto
+
+
 ### Exemplo
 ```
     from gitfunctions import gitfunctions
 
-    git = gitfunctions.Git(repo_path='C:\\pasta_projeto')
+    git = gitfunctions.Git(repository_name='origin', repo_path='C:\\pasta_projeto')
     git.check_updates()
 ```
 
