@@ -2,4 +2,3 @@ venv/
 dist/
 gitfunctions.egg-info/
 __pycache__
-setup.py
