@@ -36,3 +36,4 @@ class Git:
         print(Fore.LIGHTMAGENTA_EX)
         if not has_updates: raise ValueError(f"Você tem mudanças não commitadas")
         else: print(Fore.GREEN + f"Repositório atualizados")
+        print(Fore.RESET)
