@@ -3,11 +3,23 @@
 [PT] Lib para funções do git.<br>
 [EN] Lib for git functions.
 
-## Detalhamento:
 
-### Instalar dependências
+## Funcionalidades:
+* Checar se existem modificações
+
+## Como usar:
+
+### Instalação
 ```
-    pip install -r requirements.txt
+    pip install gitfunctions
+```
+
+### Exemplo
+```
+    from gitfunctions import gitfunctions
+
+    git = gitfunctions.Git(repo_path='C:\\pasta_projeto')
+    git.check_updates()
 ```
 
 ### Links:

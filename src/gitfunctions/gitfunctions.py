@@ -1,15 +1,15 @@
 from git import Repo
-
+import os
 
 class Git:
-    def __init__(self, remote_repository_name='origin', repo_path='.'):
+    def __init__(self, remote_repository_name='origin', repo_path=os.getcwd()):
         self.repository = Repo(repo_path)
         self.remote_repository_name = remote_repository_name
 
 
     def __remote_repository_exists(self):
         try:             
-            remote = self.repository.remote(remote_repository_name)
+            remote = self.repository.remote(self.remote_repository_name)
             remote.fetch()
             latest_remote_commit = remote.refs[self.repository.active_branch.name].commit
 
@@ -22,9 +22,12 @@ class Git:
         latest_local_commit = self.repository.head.commit
         latest_remote_commit, remote_repository_exists = self.__remote_repository_exists()
 
-        print(f"Mudanças não commitadas ou unstaged: {self.repository.is_dirty()}")
+        print(f"Existem mudanças não commitadas/unstaged? {self.repository.is_dirty()}")
         print(f"Arquivos untracked: {len(self.repository.untracked_files)}")
 
-        if remote_repository_exists: print(f'Sem repositório remoto: {remote_repository_name}')
+        if remote_repository_exists: print(f'Sem repositório remoto: {self.remote_repository_name}')
         
-        print(f"Último commit enviado: {latest_local_commit == latest_remote_commit}")
+        has_updates = latest_local_commit == latest_remote_commit
+
+        if not has_updates: raise ValueError(f"Você tem mudanças não commitadas")
+        else: print(f"Repositório atualizados")
