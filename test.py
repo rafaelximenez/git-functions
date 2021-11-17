@@ -1,4 +1,4 @@
-from gitfunctions import Git
+from src.gitfunctions.gitfunctions import Git
 
-git = Git(repo_path='C:\\Users\\rximenez\\dev\\python\\script-wordcloud')
+git = Git(repo_path='.')
 git.check_updates()
